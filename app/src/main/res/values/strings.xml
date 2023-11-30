@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MP3Player</string>
+    <string name="settings_button">Settings</string>
+    <string name="back_button">Back</string>
+    <string name="play_button">Play</string>
+    <string name="pause_button">Pause</string>
+    <string name="stop_button">Stop</string>
+    <string name="save_button">Save</string>
+    <string name="playback">Playback Speed:</string>
+    <string name="progress">Progress</string>
+    <string name="currentlyPlaying">Currently Playing</string>
+</resources>
