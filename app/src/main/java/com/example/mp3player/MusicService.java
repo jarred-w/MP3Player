@@ -1,31 +1,22 @@
 package com.example.mp3player;
 
 import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
-import android.os.Build;
 import android.os.IBinder;
-import android.util.Log;
-
 import androidx.annotation.Nullable;
-import androidx.core.app.NotificationCompat;
+
 
 /**
  *
  * Class for a MusicService Service
  */
 public class MusicService extends Service {
-    private static int counter = 0;
     private static final int NOTIFICATION_ID = 1;
     private float playbackSpeed;
     private MP3PlayerWrapper mp3Wrapper;
     private Boolean resume = false;
-
-    private int ID;
-    private boolean debug = true;
 
     //Local class to instantiate a service
     public class LocalBinder extends Binder {
@@ -49,15 +40,12 @@ public class MusicService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (debug) Log.d("MusicService ID", "On destroy: " + ID);
         stopSelf();
     }
 
     @Override
     public int onStartCommand ( Intent intent , int flags , int startId ) {
         if (intent != null) {
-            ID = counter++;
-            if (debug) Log.d("MusicService ID", String.valueOf(ID));
             Notification notification = intent.getParcelableExtra("notification");
             String filePath = intent.getStringExtra("uri");
             resume = intent.getBooleanExtra("resume", false);
@@ -79,7 +67,6 @@ public class MusicService extends Service {
     public boolean onUnbind(Intent intent) {
         // Called when the last client unbinds from the service
         // Perform cleanup or other operations here
-        if (debug) Log.d("MusicService ID", "Unbind: " + ID);
         return super.onUnbind(intent);
     }
 
@@ -93,7 +80,6 @@ public class MusicService extends Service {
     //Pauses music
     public void pause() {
         if (mp3Wrapper != null){
-            Log.d("COMP3018", "MusicService: Pausing");
             mp3Wrapper.pause();
         }
     }

@@ -1,7 +1,5 @@
 package com.example.mp3player;
 
-import android.util.Log;
-
 /**
  *
  * Wrapper class for MP3Player class
@@ -35,7 +33,6 @@ public class MP3PlayerWrapper {
 
     //Wrapper for MP3Player class
     public void pause() {
-        Log.d("COMP3018", "MusicService: Pausing");
         mp3Player.pause();
     }
 

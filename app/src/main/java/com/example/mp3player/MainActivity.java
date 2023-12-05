@@ -11,14 +11,12 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.database.Cursor;
 import android.provider.MediaStore;
 import android.widget.AdapterView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -87,18 +85,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void printServices() {
-        ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningServiceInfo> runningServices = activityManager.getRunningServices(Integer.MAX_VALUE);
-
-        if (runningServices != null) {
-            for (ActivityManager.RunningServiceInfo service : runningServices) {
-                Log.d("Running Service", String.valueOf(service) + "\n---------------------------------");
-            }
-
-        }
-    }
-
     //Method to take in a music file and change Activity startup
     private void checkSongStream(String uri) {
         ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
@@ -135,9 +121,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         loadPreferences();
-
-        //Debug
-        printServices();
     }
 
     //Launch MusicPlayer Activity

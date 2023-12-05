@@ -2,7 +2,6 @@ package com.example.mp3player;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 /**
  *

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Notification;
@@ -20,7 +19,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -75,7 +73,6 @@ public class MusicPlayer extends AppCompatActivity {
         resume = getIntent().getBooleanExtra("resume", false);
 
         if(savedInstanceState != null){
-            Log.d("comp3018", "MusicPlayer: There is a save state");
             resume = savedInstanceState.getBoolean("resume");
         }
 
@@ -123,7 +120,6 @@ public class MusicPlayer extends AppCompatActivity {
         serviceIntent.putExtra("resume", resume);
 
         createNotificationChannel();
-        Log.d("MusicPlayer", "resume TAG: " + resume);
         if(!resume){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 ContextCompat.startForegroundService(this, serviceIntent);
@@ -199,10 +195,7 @@ public class MusicPlayer extends AppCompatActivity {
 
     //Pauses song if service is bound
     public void onPauseButtonPress(View v) {
-        Log.d("COMP3018", "MusicPlayer: Pausing, checking bound");
         if(isBound) {
-            Log.d("COMP3018", "MusicPlayer: Bound");
-            Log.d("COMP3018", "MusicPlayer: Pausing");
             musicService.pause();
         }
 
