@@ -142,17 +142,24 @@ public class MusicPlayer extends AppCompatActivity {
             @Override
             public void run() {
                 mp3Player = MP3PlayerWrapper.getInstance();
-                String duration = String.valueOf(mp3Player.getDuration() / 1000);
-                String progress = String.valueOf(mp3Player.getProgress() / 1000);
+                String duration = formatTime(mp3Player.getDuration());
+                String progress = formatTime(mp3Player.getProgress());
                 updateText(duration, progress);
                 updateProgressPeriodically();
             }
 
             private void updateText(String duration, String progress) {
                 progressText.setText(progress + '/' + duration);
-                progressBar.setProgress(Integer.parseInt(progress));
+                progressBar.setProgress(mp3Player.getProgress()/1000);
             }
         }, 1000);
+    }
+
+    private String formatTime(int milliseconds) {
+        int seconds = milliseconds / 1000;
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+        return String.format("%02d:%02d", minutes, seconds);
     }
 
     /**
