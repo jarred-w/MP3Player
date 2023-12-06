@@ -155,6 +155,12 @@ public class MusicPlayer extends AppCompatActivity {
         }, 1000);
     }
 
+    /**
+     * Formats time from MP3Player, to make more readable
+     *
+     * @param milliseconds Time in milliseconds
+     * @return The formatted time
+     */
     private String formatTime(int milliseconds) {
         int seconds = milliseconds / 1000;
         int minutes = seconds / 60;

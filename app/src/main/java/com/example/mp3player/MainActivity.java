@@ -155,8 +155,8 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Launch MusicPlayer Activity when a song is playing.
      *
-     * @param uri      The URI of the music file.
-     * @param duration The duration of the song.
+     * @param uri       The URI of the music file.
+     * @param duration  The duration of the song.
      * @param songTitle The title of the song.
      */
     private void onMusicContinueClick(String uri, int duration, String songTitle) {
